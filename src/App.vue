@@ -1,47 +1,26 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  import { ref } from 'vue';
+
+  const num = ref(2); // 先定義值，再決定如何操作；關注點分離的做法
+  // console.log(num.value);
+
+  // setInterval(() => {
+  // 	num.value++
+  // }, 500);
+
+  function clickMe() {
+    num.value++
+  }
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    {{ num }}
 
-  <main>
-    <TheWelcome />
-  </main>
+    <!-- v-on 是一個監聽器 -->
+    <button type="button" v-on:click="clickMe">點我</button>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
